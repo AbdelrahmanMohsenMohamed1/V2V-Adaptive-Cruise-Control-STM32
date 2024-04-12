@@ -56,7 +56,6 @@ TIM_HandleTypeDef htim4;
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
 
-osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -69,7 +68,6 @@ static void MX_TIM3_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_USART3_UART_Init(void);
-void StartDefaultTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -153,34 +151,7 @@ int main(void)
 	vTaskStartScheduler();
 	//mqBLE = xQueueCreate(4 , 1);
 	/* USER CODE END 2 */
-
-	/* USER CODE BEGIN RTOS_MUTEX */
-	/* add mutexes, ... */
-	/* USER CODE END RTOS_MUTEX */
-
-	/* USER CODE BEGIN RTOS_SEMAPHORES */
-	/* add semaphores, ... */
-	/* USER CODE END RTOS_SEMAPHORES */
-
-	/* USER CODE BEGIN RTOS_TIMERS */
-	/* start timers, add new ones, ... */
-	/* USER CODE END RTOS_TIMERS */
-
-	/* USER CODE BEGIN RTOS_QUEUES */
-	/* add queues, ... */
-	/* USER CODE END RTOS_QUEUES */
-
-	/* Create the thread(s) */
-	/* definition and creation of defaultTask */
-	osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-	defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
-	/* USER CODE BEGIN RTOS_THREADS */
-	/* add threads, ... */
-	/* USER CODE END RTOS_THREADS */
-
 	/* Start scheduler */
-	osKernelStart();
 	/* We should never get here as control is now taken by the scheduler */
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
@@ -595,7 +566,7 @@ void ACC_Task         (void  * argument)
 			}
 			else if(Distance <= 10.0 && Distance > 5.0)
 			{
-				Duty = 10;
+				Duty = 20;
 				DC_Motor_SetSpeed(Duty);
 				u8FlagLess5 =  1;
 				xEventGroupSetBits(EG_V2V, EG_DIS_LESS_10);
@@ -627,8 +598,6 @@ void Action_Task      (void  * argument)
 		if(EG_Value & EG_ENGINE_START)
 		{
 			// Start Motor with Duty 50%
-			//DC_Motor_SetSpeed(300);
-			TIM3->CCR1 = 20;
 			DC_Motor_Init();
 			Engine_State = ENGINE_ON;
 		}
@@ -636,7 +605,6 @@ void Action_Task      (void  * argument)
 		{
 			// Stop Motor Duty 0%
 			Duty =0;
-			DC_Motor_SetSpeed(Duty);
 			DC_Motor_STOP();
 			Engine_State = ENGINE_OFF;
 		}
@@ -683,24 +651,6 @@ void Display_Task     (void  * argument)
 	}
 }
 /* USER CODE END 4 */
-
-/* USER CODE BEGIN Header_StartDefaultTask */
-/**
- * @brief  Function implementing the defaultTask thread.
- * @param  argument: Not used
- * @retval None
- */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void const * argument)
-{
-	/* USER CODE BEGIN 5 */
-	/* Infinite loop */
-	for(;;)
-	{
-		osDelay(1);
-	}
-	/* USER CODE END 5 */
-}
 
 /**
  * @brief  Period elapsed callback in non blocking mode
