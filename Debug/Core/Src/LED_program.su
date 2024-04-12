@@ -1,0 +1,3 @@
+../Core/Src/LED_program.c:19:6:LED_voidTurnOn	16	static
+../Core/Src/LED_program.c:24:6:LED_voidTurnOff	16	static
+../Core/Src/LED_program.c:29:6:LED_voidToggle	16	static
