@@ -10,6 +10,6 @@ main.c:473:6:BLE_Read_Task	8
 main.c:518:6:V2V_Task	5
 main.c:549:6:ACC_Task	6
 main.c:588:6:Action_Task	9
-main.c:645:6:Display_Task	1
-main.c:663:6:HAL_TIM_PeriodElapsedCallback	2
-main.c:680:6:Error_Handler	1
+main.c:645:6:Display_Task	3
+main.c:685:6:HAL_TIM_PeriodElapsedCallback	2
+main.c:702:6:Error_Handler	1

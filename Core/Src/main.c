@@ -646,7 +646,29 @@ void Display_Task     (void  * argument)
 {
 	while(1)
 	{
-		// Display ( Distance & Duty & ACC State On LCD)
+		if(Engine_State==1)
+		{
+			LCD_voidClear();
+			LCD_voidInit();
+			// Display ( Distance & Duty & ACC State On LCD)
+			LCD_voidSetCursor(0, 0);
+			LCD_voidWriteString("Duty:");
+			LCD_voidWriteNum(Duty);
+			LCD_voidSetCursor(0, 9);
+			LCD_voidWriteString("Dist:");
+			LCD_voidWriteNum(Distance);
+			LCD_voidSetCursor(1, 1);
+			LCD_voidWriteString("ACC State: ");
+			if(ACC_State==1)
+			{
+				LCD_voidWriteString("ON");
+			}
+			else
+			{
+				LCD_voidWriteString("OFF");
+			}
+
+		}
 		vTaskDelay(1000);
 	}
 }
