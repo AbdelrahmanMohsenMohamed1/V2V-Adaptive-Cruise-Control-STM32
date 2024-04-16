@@ -7,6 +7,6 @@ port.c:353:6:vPortEndScheduler	2
 port.c:361:6:vPortEnterCritical	3
 port.c:378:6:vPortExitCritical	3
 port.c:389:6:PendSV_Handler	1
-port.c:426:6:SysTick_Handler	2
+port.c:426:6:xPortSysTickHandler	2
 port.c:617:30:vPortSetupTimerInterrupt	1
 port.c:640:7:vPortValidateInterruptPriority	4

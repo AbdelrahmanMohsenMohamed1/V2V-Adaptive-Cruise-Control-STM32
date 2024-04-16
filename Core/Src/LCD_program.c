@@ -22,7 +22,7 @@ void LCD_voidInit(void)
 	// 4 bit initialisation
 
 	//Wait for power-on initialization time (greater than 40ms)
-	vTaskDelay(50);
+	//vTaskDelay(50);
 
 	//Send 0x33 command sequence for 4-bit mode
 	LCD_voidWriteCommand(0x33);

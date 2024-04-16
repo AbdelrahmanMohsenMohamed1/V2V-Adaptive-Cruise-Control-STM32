@@ -56,6 +56,7 @@ TIM_HandleTypeDef htim4;
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
 
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -101,6 +102,7 @@ float Distance = 0;
 uint8_t Counter = 0;
 uint8_t u8FlagLess10=1;
 uint8_t u8FlagLess5= 1;
+uint8_t u8LCDFlagInit=0;
 
 /* USER CODE END 0 */
 
@@ -144,14 +146,39 @@ int main(void)
 	xTaskCreate(V2V_Task, NULL, 100 , NULL , 2 , NULL);
 	xTaskCreate(ACC_Task, NULL, 100 , NULL , 3 , NULL);
 	xTaskCreate(Action_Task, NULL, 100 , NULL , 4 , NULL);
-	xTaskCreate(Display_Task, NULL, 100 , NULL , 5 , NULL);
+	xTaskCreate(Display_Task, NULL, 50 , NULL , 5 , NULL);
 	UltraSonic_INIT();
 	DC_Motor_Init();
 
 	vTaskStartScheduler();
 	//mqBLE = xQueueCreate(4 , 1);
 	/* USER CODE END 2 */
+
+	/* USER CODE BEGIN RTOS_MUTEX */
+	/* add mutexes, ... */
+	/* USER CODE END RTOS_MUTEX */
+
+	/* USER CODE BEGIN RTOS_SEMAPHORES */
+	/* add semaphores, ... */
+	/* USER CODE END RTOS_SEMAPHORES */
+
+	/* USER CODE BEGIN RTOS_TIMERS */
+	/* start timers, add new ones, ... */
+	/* USER CODE END RTOS_TIMERS */
+
+	/* USER CODE BEGIN RTOS_QUEUES */
+	/* add queues, ... */
+	/* USER CODE END RTOS_QUEUES */
+
+	/* Create the thread(s) */
+	/* definition and creation of defaultTask */
+
+	/* USER CODE BEGIN RTOS_THREADS */
+	/* add threads, ... */
+	/* USER CODE END RTOS_THREADS */
+
 	/* Start scheduler */
+
 	/* We should never get here as control is now taken by the scheduler */
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
@@ -470,6 +497,40 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void Display_Task     (void  * argument)
+{
+	while(1)
+	{
+		if(Engine_State == 1)
+		{
+			LCD_voidClear();
+			if(u8LCDFlagInit == 0)
+			{
+				LCD_voidInit();
+				u8LCDFlagInit = 1;
+			}
+			// Display ( Distance & Duty & ACC State On LCD)
+			LCD_voidSetCursor(0, 0);
+			LCD_voidWriteString("Duty:");
+			LCD_voidWriteNum(Duty);
+			LCD_voidSetCursor(0, 9);
+			LCD_voidWriteString("Dist:");
+			LCD_voidWriteNum(Distance);
+			LCD_voidSetCursor(1, 1);
+			LCD_voidWriteString("ACC State: ");
+			if(ACC_State==1)
+			{
+				LCD_voidWriteString("ON");
+			}
+			else
+			{
+				LCD_voidWriteString("OFF");
+			}
+		}
+		vTaskDelay(1000);
+	}
+}
 void BLE_Read_Task    (void  * argument)
 {
 	HAL_StatusTypeDef RetValue = HAL_ERROR;
@@ -561,11 +622,13 @@ void ACC_Task         (void  * argument)
 			UltraSonic_Get_Distance(&Distance);
 			if(Distance > 10 )
 			{
+				ACC_State = 0;
 				u8FlagLess10 = 1;
 				u8FlagLess5 =  1;
 			}
 			else if(Distance <= 10.0 && Distance > 5.0)
 			{
+				ACC_State = 1;
 				Duty = 20;
 				DC_Motor_SetSpeed(Duty);
 				u8FlagLess5 =  1;
@@ -573,6 +636,7 @@ void ACC_Task         (void  * argument)
 			}
 			else if(Distance < 5.0)
 			{
+				ACC_State = 1;
 				Duty = MOTOR_MIN_SPEED;
 				DC_Motor_SetSpeed(Duty);
 				xEventGroupSetBits(EG_V2V, EG_DIS_LESS_5);
@@ -642,58 +706,9 @@ void Action_Task      (void  * argument)
 		}
 	}
 }
-void Display_Task     (void  * argument)
-{
-	while(1)
-	{
-		if(Engine_State==1)
-		{
-			LCD_voidClear();
-			LCD_voidInit();
-			// Display ( Distance & Duty & ACC State On LCD)
-			LCD_voidSetCursor(0, 0);
-			LCD_voidWriteString("Duty:");
-			LCD_voidWriteNum(Duty);
-			LCD_voidSetCursor(0, 9);
-			LCD_voidWriteString("Dist:");
-			LCD_voidWriteNum(Distance);
-			LCD_voidSetCursor(1, 1);
-			LCD_voidWriteString("ACC State: ");
-			if(ACC_State==1)
-			{
-				LCD_voidWriteString("ON");
-			}
-			else
-			{
-				LCD_voidWriteString("OFF");
-			}
 
-		}
-		vTaskDelay(1000);
-	}
-}
 /* USER CODE END 4 */
 
-/**
- * @brief  Period elapsed callback in non blocking mode
- * @note   This function is called  when TIM2 interrupt took place, inside
- * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- * a global variable "uwTick" used as application time base.
- * @param  htim : TIM handle
- * @retval None
- */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	/* USER CODE BEGIN Callback 0 */
-
-	/* USER CODE END Callback 0 */
-	if (htim->Instance == TIM2) {
-		HAL_IncTick();
-	}
-	/* USER CODE BEGIN Callback 1 */
-
-	/* USER CODE END Callback 1 */
-}
 
 /**
  * @brief  This function is executed in case of error occurrence.
