@@ -103,6 +103,7 @@ uint8_t Counter = 0;
 uint8_t u8FlagLess10=1;
 uint8_t u8FlagLess5= 1;
 uint8_t u8LCDFlagInit=0;
+uint8_t u8CLRState=0;
 
 /* USER CODE END 0 */
 
@@ -504,7 +505,15 @@ void Display_Task     (void  * argument)
 	{
 		if(Engine_State == 1)
 		{
-			LCD_voidClear();
+			if(Distance < 10.0 && u8CLRState == 0 )
+			{
+				u8CLRState = 1;
+				LCD_voidClear();
+			}
+			else if(Distance > 10.0)
+			{
+				u8CLRState = 0;
+			}
 			if(u8LCDFlagInit == 0)
 			{
 				LCD_voidInit();
@@ -512,23 +521,23 @@ void Display_Task     (void  * argument)
 			}
 			// Display ( Distance & Duty & ACC State On LCD)
 			LCD_voidSetCursor(0, 0);
-			LCD_voidWriteString("Duty:");
+			LCD_voidWriteString((uint8_t*)"Duty:");
 			LCD_voidWriteNum(Duty);
 			LCD_voidSetCursor(0, 9);
-			LCD_voidWriteString("Dist:");
+			LCD_voidWriteString((uint8_t*)"Dist:");
 			LCD_voidWriteNum(Distance);
 			LCD_voidSetCursor(1, 1);
-			LCD_voidWriteString("ACC State: ");
+			LCD_voidWriteString((uint8_t*)"ACC State: ");
 			if(ACC_State==1)
 			{
-				LCD_voidWriteString("ON");
+				LCD_voidWriteString((uint8_t*)" ON");
 			}
 			else
 			{
-				LCD_voidWriteString("OFF");
+				LCD_voidWriteString((uint8_t*)"OFF");
 			}
 		}
-		vTaskDelay(1000);
+		vTaskDelay(500);
 	}
 }
 void BLE_Read_Task    (void  * argument)
@@ -572,7 +581,7 @@ void BLE_Read_Task    (void  * argument)
 		{
 
 		}
-		vTaskDelay(15);
+		vTaskDelay(10);
 	}
 }
 
@@ -646,7 +655,7 @@ void ACC_Task         (void  * argument)
 
 			}
 		}
-		vTaskDelay(300);
+		vTaskDelay(250);
 	}
 }
 void Action_Task      (void  * argument)
