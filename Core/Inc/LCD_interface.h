@@ -23,7 +23,7 @@ void LCD_voidInit(void);
  * Writes a command to the LCD module.
  * Used internally by other functions to send control commands to the LCD.
  */
-void LCD_voidWriteCmd(uint8_t copy_u8Cmd);
+void LCD_voidWriteCommand(uint8_t copy_u8Command);
 
 /* 
  * Function: LCD_voidWriteChar
@@ -31,14 +31,14 @@ void LCD_voidWriteCmd(uint8_t copy_u8Cmd);
  * Writes a single character to the LCD at the current cursor position.
  * Used to display characters on the screen.
  */
-void LCD_voidWriteChar(uint8_t copy_u8Char);
+void LCD_voidWriteData(uint8_t copy_u8data);
 		
 /* 
  * Function: LCD_voidClearScreen
  * ------------------------------
  * Clears the entire LCD screen by sending the appropriate command.
  */
-void LCD_voidClearScreen(void);
+void LCD_voidClear(void);
 
 /* 
  * Function: LCD_voidSetCursor
