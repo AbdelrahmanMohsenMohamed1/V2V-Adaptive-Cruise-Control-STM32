@@ -1,8 +1,8 @@
-../Core/Src/LCD_program.c:20:6:LCD_voidInit	1
-../Core/Src/LCD_program.c:55:6:LCD_voidWriteCommand	1
-../Core/Src/LCD_program.c:90:6:LCD_voidWriteData	1
-../Core/Src/LCD_program.c:125:6:LCD_voidClear	1
-../Core/Src/LCD_program.c:131:6:LCD_voidSetCursor	1
-../Core/Src/LCD_program.c:136:6:LCD_voidWriteString	2
-../Core/Src/LCD_program.c:146:6:LCD_voidWriteNum	4
-../Core/Src/LCD_program.c:168:6:LCD_voidCreateChar	2
+LCD_program.c:20:6:LCD_voidInit	1
+LCD_program.c:55:6:LCD_voidWriteCommand	1
+LCD_program.c:90:6:LCD_voidWriteData	1
+LCD_program.c:125:6:LCD_voidClear	1
+LCD_program.c:131:6:LCD_voidSetCursor	1
+LCD_program.c:136:6:LCD_voidWriteString	2
+LCD_program.c:146:6:LCD_voidWriteNum	4
+LCD_program.c:168:6:LCD_voidCreateChar	2
