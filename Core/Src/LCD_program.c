@@ -11,6 +11,7 @@
 
 // Include the GPIO header file
 #include "stm32f1xx_hal.h"
+#include "cmsis_os.h"
 
 //include LCD Header files
 #include "LCD_interface.h"
@@ -21,31 +22,31 @@ void LCD_voidInit(void)
 	// 4 bit initialisation
 
 	//Wait for power-on initialization time (greater than 40ms)
-	HAL_Delay(50);
+	vTaskDelay(50);
 	
 	//Send 0x33 command sequence for 4-bit mode
 	LCD_voidWriteCommand(0x33);
-	HAL_Delay(10);
+	vTaskDelay(10);
 	
 	//Send 0x32 command sequence for 4-bit mode
 	LCD_voidWriteCommand(0x32);
-	HAL_Delay(10);
+	vTaskDelay(10);
 	
 	//Set interface to 4-bit mode and 2 lines, 5x8 font
 	LCD_voidWriteCommand(0x28);
-	HAL_Delay(1);
+	vTaskDelay(1);
 	
 	//Display on, cursor off, blink off
 	LCD_voidWriteCommand(0x0C);
-	HAL_Delay(1);
+	vTaskDelay(1);
 	
 	//Entry mode set: increment cursor position, no display shift
 	LCD_voidWriteCommand(0x06);
-	HAL_Delay(1);
+	vTaskDelay(1);
 	
 	//Clear the display
 	LCD_voidWriteCommand(0x01);
-	HAL_Delay(2);
+	vTaskDelay(2);
 	
 	//Set cursor to the beginning of the first line
 	LCD_voidWriteCommand(0x80);
@@ -64,9 +65,9 @@ void LCD_voidWriteCommand(uint8_t copy_u8Cmd)
 
 	// Enable pulse
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_SET);
-	HAL_Delay(2);
+	vTaskDelay(2);
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_RESET); // Disable enable pin
-	HAL_Delay(2);
+	vTaskDelay(2);
 
 	// Write low nibble of command to data pins
 	HAL_GPIO_WritePin(LCD_Data_Port, LCD_Pin7, (GET_BIT(copy_u8Cmd, 3)));
@@ -79,11 +80,11 @@ void LCD_voidWriteCommand(uint8_t copy_u8Cmd)
 
 	// Enable pulse
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_SET);
-	HAL_Delay(2);
+	vTaskDelay(2);
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_RESET); // Disable enable pin
-	HAL_Delay(2);
+	vTaskDelay(2);
 
-	HAL_Delay(1);
+	vTaskDelay(1);
 }
 
 void LCD_voidWriteData(uint8_t copy_u8Char)
@@ -99,9 +100,9 @@ void LCD_voidWriteData(uint8_t copy_u8Char)
 
 	// Enable pulse
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_SET);
-	HAL_Delay(2);
+	vTaskDelay(2);
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_RESET); // Disable enable pin
-	HAL_Delay(2);
+	vTaskDelay(2);
 
 	// Write low nibble of character to data pins
 	HAL_GPIO_WritePin(LCD_Data_Port, LCD_Pin7, (GET_BIT(copy_u8Char, 3)));
@@ -114,17 +115,17 @@ void LCD_voidWriteData(uint8_t copy_u8Char)
 
 	// Enable pulse
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_SET);
-	HAL_Delay(2);
+	vTaskDelay(2);
 	HAL_GPIO_WritePin(LCD_Ctrl_Port, LCD_EN_Pin, GPIO_PIN_RESET); // Disable enable pin
-	HAL_Delay(2);
+	vTaskDelay(2);
 
-	HAL_Delay(1);
+	vTaskDelay(1);
 }
 
 void LCD_voidClear(void)
 {
 	LCD_voidWriteCommand(0x01); // Send clear screen command
-	HAL_Delay(2); // Delay for 2 milliseconds
+	vTaskDelay(2); // Delay for 2 milliseconds
 }
 
 void LCD_voidSetCursor(uint8_t copy_u8Row, uint8_t copy_u8Col)
