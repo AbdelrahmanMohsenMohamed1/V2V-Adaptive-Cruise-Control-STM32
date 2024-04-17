@@ -1,6 +1,6 @@
-DC_MOT.c:12:6:DC_Motor_Init	1
-DC_MOT.c:19:6:DC_Motor_SetSpeed	1
-DC_MOT.c:24:6:Decrease_speed_Gradually	1
-DC_MOT.c:32:6:increase_speed_Gradually	2
-DC_MOT.c:42:6:DC_Motor_SetDirection	5
-DC_MOT.c:85:6:DC_Motor_STOP	1
+../Core/Src/DC_MOT.c:12:6:DC_Motor_Init	1
+../Core/Src/DC_MOT.c:19:6:DC_Motor_SetSpeed	1
+../Core/Src/DC_MOT.c:24:6:Decrease_speed_Gradually	1
+../Core/Src/DC_MOT.c:32:6:increase_speed_Gradually	2
+../Core/Src/DC_MOT.c:42:6:DC_Motor_SetDirection	5
+../Core/Src/DC_MOT.c:85:6:DC_Motor_STOP	1
