@@ -9,9 +9,9 @@ void ICU_VoidGet_TON( uint32_t*Copy_u32_TON_microSec) ;
 // Function to introduce a delay in microseconds
 void delay (uint16_t time) ;
 
-// Function to initialize the Ultrasonic sensor
+// Function to initialize the Ultrasonic  sensor
 void UltraSonic_INIT(void) ;
-// Function to get the distance measured by the Ultrasonic sensor in centimeters
+// Function to get the distance measured by the Ultrasonic  sensor in centimeters
 void UltraSonic_Get_Distance(float*Distance_CM) ;
 
 
