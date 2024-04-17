@@ -9,39 +9,31 @@
 #define INC_DC_MOT_H_
 
 #include "stm32f1xx_hal.h"
+
 extern TIM_HandleTypeDef  htim3;
 extern TIM_HandleTypeDef  htim4;
 
 
 // MACROS Define Motor PINS
-/*#define ENA_PIN_6           GPIO_ODR_ODR6 //A    //PWM for motor  TIM3  //GA
-#define IN1_PIN_5           GPIO_ODR_ODR5   //B    //Direction Control
-#define IN2_PIN_15           GPIO_ODR_ODR15    //A    //Direction control
-#define ENB_PIN_6           GPIO_ODR_ODR6 //B     //PWM for motor   TIM4
-#define IN3_PIN_3           GPIO_ODR_ODR3  //B          //Direction Control
-#define IN4_PIN_4           GPIO_ODR_ODR4  //B           //Direction control*/
-
-#define ENA_PIN_6           GPIO_PIN_6 //A    //PWM for motor  TIM3  //GA
-#define IN1_PIN_5           GPIO_PIN_5   //B    //Direction Control
-#define IN2_PIN_15          GPIO_PIN_15    //A    //Direction control
-#define ENB_PIN_6      	    GPIO_PIN_6 //B     //PWM for motor   TIM4
-#define IN3_PIN_3           GPIO_PIN_3  //B          //Direction Control
-#define IN4_PIN_4  		    GPIO_PIN_4
-
-
+#define ENA_PIN_6            GPIO_PIN_6 //A      //PWM for motor  TIM3
+#define ENB_PIN_6            GPIO_PIN_6 //B       //PWM for motor   TIM4
+#define IN1_PIN_5            GPIO_PIN_5 //B       //Direction Control
+#define IN2_PIN_15           GPIO_PIN_15//A        //Direction control
+#define IN3_PIN_3            GPIO_PIN_3 //B          //Direction Control
+#define IN4_PIN_4            GPIO_PIN_4 //B           //Direction control
 
 
 
 /**
- * @brief:  Starts the DC motor by enabling PWM on TIM3 channel 1 andTIM4 channel 1 his function starts the pulse width modulation (PWM) on TIM3 channel 1, which is used to control the speed
+  * @brief:  Starts the DC motor by enabling PWM on TIM3 channel 1 andTIM4 channel 1 his function starts the pulse width modulation (PWM) on TIM3 channel 1, which is used to control the speed
            of a DC motor. By calling this function, the DC motor will begin rotating at the desired speed..
- * @note  Before calling this function, make sure that the TIM3 &TIM4 peripheral and TIM3 &TIM4 channel 1 are properly configured..
- * @retval None
- */
+  * @note  Before calling this function, make sure that the TIM3 &TIM4 peripheral and TIM3 &TIM4 channel 1 are properly configured..
+  * @retval None
+  */
 
 
-void DC_Motor_Init(void);
-
+void DC_Motor1_Start(void);
+void DC_Motor2_Start(void);
 /**
 
 @brief: This function sets the speed of the DC motor by adjusting the duty cycle of the PWM signal on TIM3 channel 1.
@@ -49,9 +41,20 @@ The duty cycle is specified by the parameter 'dutyCycle', which should be a valu
 @note Before calling this function, make sure that the TIM3 &TIM4  peripheral and TIM3&TIM4 channel 1 are properly configured.
 @param[in]: dutyCycle The duty cycle value representing the desired speed. Should be between 0 and 255.
 @retval: None
- */
-void DC_Motor_SetSpeed(uint8_t dutyCycle);
+*/
 
+
+
+
+/*Note
+ * MAX speed input=0
+ * Min speed input=100
+ *
+ * Max output=255"preloadvalue" the full period ON+OFF
+ * Min output=0
+ */
+void DC_Motor1_SetSpeed(uint8_t dutyCycle);
+void DC_Motor2_SetSpeed(uint8_t dutyCycle);
 
 /**
 
@@ -60,7 +63,7 @@ The speed is decreased gradually from the current speed to 0. The parameter 'spe
 @note: Before calling this function, make sure that the TIM3 &TIM4 peripheral, TIM3 &TIM4 channel 1, and the DC motor are properly configured.
 @param[in] speed The initial speed of the motor. Should be between 0 and 255.
 @retval: None
- */
+*/
 void Decrease_speed_Gradually(uint8_t speed);
 
 /**
@@ -69,7 +72,7 @@ The speed is increase gradually from the current speed to MAX_VALUE DUTY_CYCLE 1
 @note: Before calling this function, make sure that the TIM3 &TIM4 peripheral, TIM3 &TIM4 channel 1, and the DC motor are properly configured.
 @param[in] speed The initial speed of the motor. Should be between 0 and 255.
 @retval: None
- */
+*/
 void increase_speed_Gradually(uint8_t speed);
 
 /**
@@ -82,7 +85,7 @@ The parameter 'direction' specifies the desired direction, which can be one of t
 @note Before calling this function, make sure that the GPIO pins connected to the motor driver are properly configured OUTPUT.
 @param[in] direction The desired direction of the motor. Should be one of the values mentioned above.
 @retval None
- */
+*/
 void DC_Motor_SetDirection(uint8_t direction);
 
 /**
@@ -91,10 +94,10 @@ void DC_Motor_SetDirection(uint8_t direction);
 By calling this function, the PWM signal that controls the motor speed will be turned off, causing the motor to stop rotating.
 @note Before calling this function, make sure that the TIM3 peripheral and TIM3 &TIM4 channel 1 are properly configured.
 @retval None
- */
+*/
 
-void DC_Motor_STOP(void);
-
-
+void DC_Motor1_STOP(void);
+void DC_Motor2_STOP(void);
+void DC_Motor_SetSpeed(uint8_t dutyCycle);
 
 #endif /* INC_DC_MOT_H_ */
