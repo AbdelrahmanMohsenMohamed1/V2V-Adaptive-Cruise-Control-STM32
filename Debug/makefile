@@ -56,6 +56,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 AdaptiveCruiseControl_RTOS.list \
 
+OBJCOPY_HEX += \
+AdaptiveCruiseControl_RTOS.hex \
+
+OBJCOPY_BIN += \
+AdaptiveCruiseControl_RTOS.bin \
+
 
 # All Target
 all: main-build
@@ -79,12 +85,22 @@ AdaptiveCruiseControl_RTOS.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL
 	@echo 'Finished building: $@'
 	@echo ' '
 
+AdaptiveCruiseControl_RTOS.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "AdaptiveCruiseControl_RTOS.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+AdaptiveCruiseControl_RTOS.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "AdaptiveCruiseControl_RTOS.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) AdaptiveCruiseControl_RTOS.elf AdaptiveCruiseControl_RTOS.list AdaptiveCruiseControl_RTOS.map default.size.stdout
+	-$(RM) AdaptiveCruiseControl_RTOS.bin AdaptiveCruiseControl_RTOS.elf AdaptiveCruiseControl_RTOS.hex AdaptiveCruiseControl_RTOS.list AdaptiveCruiseControl_RTOS.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

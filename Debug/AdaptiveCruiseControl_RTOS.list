@@ -2840,7 +2840,7 @@ void Display_Task     (void  * argument)
  8001680:	2b01      	cmp	r3, #1
  8001682:	d159      	bne.n	8001738 <Display_Task+0xc4>
 		{
-			if(Distance < 10.0 && u8CLRState == 0 )
+			if((Distance < 10.0) && u8CLRState == 0 )
  8001684:	4b30      	ldr	r3, [pc, #192]	; (8001748 <Display_Task+0xd4>)
  8001686:	681b      	ldr	r3, [r3, #0]
  8001688:	4930      	ldr	r1, [pc, #192]	; (800174c <Display_Task+0xd8>)

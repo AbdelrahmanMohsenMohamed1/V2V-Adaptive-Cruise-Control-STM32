@@ -505,7 +505,7 @@ void Display_Task     (void  * argument)
 	{
 		if(Engine_State == 1)
 		{
-			if(Distance < 10.0 && u8CLRState == 0 )
+			if((Distance < 10.0) && u8CLRState == 0 )
 			{
 				u8CLRState = 1;
 				LCD_voidClear();
