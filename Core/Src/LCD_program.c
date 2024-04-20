@@ -22,32 +22,32 @@ void LCD_voidInit(void)
 	// 4 bit initialisation
 
 	//Wait for power-on initialization time (greater than 40ms)
-	vTaskDelay(50);
-	
+	//vTaskDelay(50);
+
 	//Send 0x33 command sequence for 4-bit mode
 	LCD_voidWriteCommand(0x33);
 	vTaskDelay(10);
-	
+
 	//Send 0x32 command sequence for 4-bit mode
 	LCD_voidWriteCommand(0x32);
 	vTaskDelay(10);
-	
+
 	//Set interface to 4-bit mode and 2 lines, 5x8 font
 	LCD_voidWriteCommand(0x28);
 	vTaskDelay(1);
-	
+
 	//Display on, cursor off, blink off
 	LCD_voidWriteCommand(0x0C);
 	vTaskDelay(1);
-	
+
 	//Entry mode set: increment cursor position, no display shift
 	LCD_voidWriteCommand(0x06);
 	vTaskDelay(1);
-	
+
 	//Clear the display
 	LCD_voidWriteCommand(0x01);
 	vTaskDelay(2);
-	
+
 	//Set cursor to the beginning of the first line
 	LCD_voidWriteCommand(0x80);
 }
@@ -174,4 +174,3 @@ void LCD_voidCreateChar(uint8_t copy_u8AddressData, uint8_t *copy_u8charArr)
 	}
 	LCD_voidWriteCommand(0x80); // Return to DDRAM address
 }
-
