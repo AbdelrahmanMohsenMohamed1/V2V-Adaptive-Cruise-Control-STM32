@@ -44,7 +44,7 @@ The V2V ACC system offers the following key features:
 
 ![image](https://github.com/AbdelrahmanMohsenMohamed1/V2V-Adaptive-Cruise-Control/assets/109293965/7bdb2bbb-c0f2-4285-916c-56ede9b7c82c)
 
-### 1.3. Operating Environment
+### 1.4 Operating Environment
 The V2V ACC software will be deployed in the following environment:
 •	Hardware Platform: The V2VACC system will run on the vehicle’s onboard computer, utilizing an ultrasonic sensor to gather data about the surroundings.
 •	Software Environment: The software will be developed using the C programming Language. It must be compatible with the vehicle’s existing software stack and communication protocols.
@@ -202,7 +202,7 @@ As the situation changes (e.g., traffic conditions, road obstacles), both cars c
 
 - <a href="https://www.linkedin.com/in/abdelrahman-mohsen-708b10249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Abdelrahman Mohsen</a>
 
-- <a href="" target="_blank">Tarek Alaa</a>
+- <a href="https://www.linkedin.com/in/tarek-alaa-468117204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Tarek Alaa</a>
 
 - <a href="https://www.linkedin.com/in/mohamed-dahy-6250631b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"> Mohamed Dahy</a>
 
