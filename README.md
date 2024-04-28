@@ -210,7 +210,7 @@ As the situation changes (e.g., traffic conditions, road obstacles), both cars c
 
 - <a href="https://www.linkedin.com/in/ali-azzouz-b88b5b11a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Ali Azzouz</a>
 
-- <a href="www.linkedin.com/in/roqaia-khalid-wagih-932804187" target="_blank">Roqaia Khalid Wagih</a>
+- <a href="https://www.linkedin.com/in/roqaia-khalid-wagih-932804187/" target="_blank">Roqaia Khalid Wagih</a>
 
 - <a href="https://www.linkedin.com/in/rehab-khaled-449b46246?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"> Rehab Khaled</a>
 
