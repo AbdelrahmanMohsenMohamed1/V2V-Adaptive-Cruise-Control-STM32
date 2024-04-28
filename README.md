@@ -204,7 +204,7 @@ As the situation changes (e.g., traffic conditions, road obstacles), both cars c
 
 - <a href="https://www.linkedin.com/in/mohamed-dahy-6250631b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"> Mohamed Dahy</a>
 
-- <a href="https://www.linkedin.com/in/zain-ibrahim-ahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"> Zain</a>
+- <a href="https://www.linkedin.com/in/zain-ibrahim-ahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"> Zain Ibrahim</a>
 
 - <a href="https://www.linkedin.com/in/mohamed-yasser-b9ba9716b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Mohamed Yasser</a>
 
