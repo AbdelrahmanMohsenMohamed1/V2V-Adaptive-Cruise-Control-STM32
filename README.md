@@ -12,7 +12,7 @@ This document outlines both the functional and non-functional requirements for t
 
 ## Table of Contents
 
- -[1.Overall Description](#Overall-Description)
+- [1.Overall Description](#Overall-Description)
 - [2.project Features & Structure](#project-Features-&-Structure)
 - [3.	External Interface Requirements](#External-Interface-Requirements)
 - [4.	Functional Requirements](#Functional-Requirements)
@@ -48,7 +48,7 @@ The V2V ACC software will be deployed in the following environment:
 •	Software Environment: The software will be developed using the C programming Language. It must be compatible with the vehicle’s existing software stack and communication protocols.
 
 
-## 2.	project Features & Structure
+## 	project Features & Structure
 ### 2.1 Automatic Speed Adjustment
 Description:
 The system automatically adjusts the vehicle's speed based on the distance and speed of the vehicle ahead and communication from the car behind it to maintain a safe following distance.
@@ -101,7 +101,7 @@ Dependencies:
 •	Responsiveness of car to change its speed and right choice of reaction.
 
 
-## 3.	External Interface Requirements
+## 	External Interface Requirements
 ### 3.1	User Interfaces
 The ACC system interacts with the vehicle’s LCD display and user controls. Key details include:
 1. LCD Display:
@@ -142,7 +142,7 @@ Integration with the vehicle's onboard computer system is essential. The ACC sys
 
 
 
-## 4.	Functional Requirements
+## 	Functional Requirements
 ### 4.1. Vehicle Detection
 The A3CC system shall utilize ultrasonic sensors to detect vehicles ahead. Specifically:
 •	Detection Mechanism:
@@ -182,29 +182,29 @@ If the leading car accelerates or decelerates the following car will react accor
 The Bluetooth communication allows for real-time updates between vehicles.
 As the situation changes (e.g., traffic conditions, road obstacles), both cars can adapt their behaviour promptly.
 
-## 5.	State Machine Diagram
+## 	State Machine Diagram
  ![image](https://github.com/AbdelrahmanMohsenMohamed1/V2V-Adaptive-Cruise-Control/assets/109293965/87955484-20df-4152-b4f1-16de8e1a9215)
 
 
-## 6.	Sequence Diagram
+## 	Sequence Diagram
 ![image](https://github.com/AbdelrahmanMohsenMohamed1/V2V-Adaptive-Cruise-Control/assets/109293965/0dc92145-b2d7-4882-8b6c-23916a8f4680)
 
-## 7.Testing
+## Testing
 - gtest
 - static tool analysis
 - bazal
 
-## 8.team member
+## team member
 name------   linkedin or github
 
-## 9.Special Thanks
+## Special Thanks
 
 I would like to express my sincere gratitude to our instructor 
 ENG.ahmed for his valuable guidance and support throughout this internship.
 
-## 10.License
+## License
 - license
 
-## 11.References
+## References
 - (References to external resources)[https://www.st.com/resource/en/datasheet/stm32f103ze.pdf]
 
