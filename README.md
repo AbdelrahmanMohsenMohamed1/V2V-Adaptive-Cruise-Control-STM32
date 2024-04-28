@@ -12,7 +12,7 @@ This document outlines both the functional and non-functional requirements for t
 
 ## Table of Contents
 
-- [Overall Description](#1.-Overall-Description)
+ -[1.Overall Description](#Overall-Description)
 - [2.project Features & Structure](#project-Features-&-Structure)
 - [3.	External Interface Requirements](#External-Interface-Requirements)
 - [4.	Functional Requirements](#Functional-Requirements)
@@ -25,7 +25,7 @@ This document outlines both the functional and non-functional requirements for t
 - [11.References](#10.References)
 
 
-## 1.	Overall Description
+## 	Overall Description
 ### 1.1. Product Features 
 The V2V ACC system offers the following key features:
 •	Bluetooth Communication: By utilizing Bluetooth, vehicles exchange data seamlessly, enhancing safety and ensuring smoother operation. This cooperative communication allows cars to follow closely, brake, and accelerate in sync, resulting in safer driving experiences.
