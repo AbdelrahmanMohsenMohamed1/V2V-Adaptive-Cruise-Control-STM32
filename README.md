@@ -37,8 +37,10 @@ The V2V ACC system offers the following key features:
 
 •	Obstacle Alert System: When the ACC detects a nearby obstacle (such as another vehicle suddenly entering the lane), it activates visual and auditory alerts. The car’s buzzer and warning lights are triggered to notify the driver, promoting timely intervention.
 
+### 1.2 Archeture desgin
+![image](https://github.com/AbdelrahmanMohsenMohamed1/V2V-Adaptive-Cruise-Control-STM32/assets/109293965/3665bdba-9e2f-46f7-87cd-bc60b6832f0e)
 
-### 1.2. Use Case Diagram 
+### 1.3 Use Case Diagram 
 
 ![image](https://github.com/AbdelrahmanMohsenMohamed1/V2V-Adaptive-Cruise-Control/assets/109293965/7bdb2bbb-c0f2-4285-916c-56ede9b7c82c)
 
