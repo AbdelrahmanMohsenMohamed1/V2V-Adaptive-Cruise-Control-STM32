@@ -200,11 +200,11 @@ name------   linkedin or github
 ## Special Thanks
 
 I would like to express my sincere gratitude to our instructor 
-ENG.ahmed for his valuable guidance and support throughout this internship.
+Eng. Ahmed Abd Elreheem for his valuable guidance and support throughout this internship.
 
 ## License
 - license
 
 ## References
-- (References to external resources)[https://www.st.com/resource/en/datasheet/stm32f103ze.pdf]
+- [References to external resources](https://www.st.com/resource/en/datasheet/stm32f103ze.pdf)
 
