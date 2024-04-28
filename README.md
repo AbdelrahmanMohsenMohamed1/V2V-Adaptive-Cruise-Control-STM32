@@ -12,7 +12,7 @@ This document outlines both the functional and non-functional requirements for t
 
 ## Table of Contents
 
-- [1.Overall Description](#Overall-Description)
+- [1.Overall Description](#1.-Overall-Description)
 - [2.project Features & Structure](#project-Features-&-Structure)
 - [3.	External Interface Requirements](#External-Interface-Requirements)
 - [4.	Functional Requirements](#Functional-Requirements)
