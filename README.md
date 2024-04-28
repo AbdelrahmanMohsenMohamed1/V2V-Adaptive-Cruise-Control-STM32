@@ -219,7 +219,7 @@ As the situation changes (e.g., traffic conditions, road obstacles), both cars c
 ## Special Thanks
 
 I would like to express my sincere gratitude to our instructor 
-Eng. Ahmed Abd Elreheem for his valuable guidance and support throughout this internship.
+[Eng. Ahmed Abd Elreheem](https://www.linkedin.com/in/ahmed-abdelraheem/) for his valuable guidance and support throughout this internship.
 
 ## License
 - license
