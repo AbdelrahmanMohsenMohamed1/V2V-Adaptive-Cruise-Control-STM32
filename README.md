@@ -195,7 +195,7 @@ As the situation changes (e.g., traffic conditions, road obstacles), both cars c
 - gtest
 - static tool analysis
 - bazal
-## SRS ducumentation 
+## SRS documentation 
 
 ## team member
 ### 👨‍🎓 👩‍🎓Members:
